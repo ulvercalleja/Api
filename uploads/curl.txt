@@ -1,0 +1,5 @@
+curl -X POST "http://localhost:8080/alimentos/addImage/1" -F "image=@Api/uploads/pollo.jpg"
+
+curl -X POST "http://localhost:8080/alimentos/1/uploadImage" -H "Content-Type: multipart/form-data" -F "image=@Api/uploads/pollo.jpg"
+
+curl -X POST "http://localhost:8080/user/1/uploadImage" -H "Content-Type: multipart/form-data" -F "image=@Api/uploads/fotoperfil.jpg"
