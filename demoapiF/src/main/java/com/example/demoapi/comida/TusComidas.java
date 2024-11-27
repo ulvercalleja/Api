@@ -28,7 +28,7 @@ public class TusComidas {
     private int id;
 
 
-    @Column(unique = true)
+    @Column(unique = false)
     private String nombre;
     private int valorCalorico;
     private int hidratos;

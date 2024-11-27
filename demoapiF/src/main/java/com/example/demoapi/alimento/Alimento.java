@@ -21,7 +21,7 @@ public class Alimento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;  
     
-    @Column(unique = true)
+    @Column(unique = false)
     private String nombre;
     private int valorCalorico;
     private int hidratos;
