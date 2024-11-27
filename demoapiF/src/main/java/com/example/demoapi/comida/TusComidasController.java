@@ -24,18 +24,19 @@ public class TusComidasController {
     @Autowired
     private TusComidasService comidaService;
 
-    @PostMapping("/addOne")
-    public ResponseEntity<TusComidas> addOneAlimento(@RequestBody TusComidas comida) {
-        TusComidas savedComida = comidaService.addComida(comida);
+    @PostMapping("/addOne/{usuario_id}")
+    public ResponseEntity<TusComidas> addOneAlimento(@PathVariable("usuario_id") Long usuario_id, @RequestBody TusComidas comida) {
+        TusComidas savedComida = comidaService.addComida(comida, usuario_id);
         return new ResponseEntity<>(savedComida, HttpStatus.CREATED);
     }
+
     
     @GetMapping("/getAll/{usuario_id}")
     public ResponseEntity<List<TusComidas>> getAllMisComidas(@PathVariable("usuario_id") Long usuario_id) {
         List<TusComidas> misComidas = comidaService.getAllMisComidas(usuario_id);
         return new ResponseEntity<>(misComidas, HttpStatus.OK);
     }
-
+    
     
     // @Autowired
     // private final ComidaService ComidaService;

@@ -24,6 +24,9 @@ public class Alimento {
     @Column(unique = true)
     private String nombre;
     private int valorCalorico;
+    private int hidratos;
+    private int proteinas;
+    private int grasas;
     
     @Lob
     @Column(name = "imagen", columnDefinition = "LONGBLOB")
