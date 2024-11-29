@@ -28,7 +28,9 @@ public class UserDto {
     @NotBlank
     @Size(max=25)
     private String password;
-
+    
+    private String foto_perfil;
+    
     public UserDto (String nombreUsuario, String password){
 
         this.nombreUsuario = nombreUsuario;
