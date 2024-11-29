@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import jakarta.validation.Valid;
+import org.mindrot.jbcrypt.BCrypt;
 @Service
 @Validated
 public class UserServiceImpl implements UserService {
@@ -50,8 +51,8 @@ public class UserServiceImpl implements UserService {
     
     @Override
     public RespuestaLogin login(String email, String password) {
-        Usuario usuario = userRepo.login(email, password);
-        if (usuario != null) {
+        Usuario usuario = userRepo.findByEmail(email);
+        if (usuario != null && BCrypt.checkpw(password, usuario.getPassword())) {
             return new RespuestaLogin(true, usuario.getId());
         } else {
             return new RespuestaLogin(false, null);
@@ -60,18 +61,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto save(@Valid UserDto userDto) {
-       // Convertir el DTO a la entidad Usuario
+        // Convertir DTO a entidad Usuario
         Usuario usuario = modelMapper.map(userDto, Usuario.class);
+
+        // Si la contraseña está presente y no es un hash, cifrarla
+        if (userDto.getPassword() != null && !userDto.getPassword().startsWith("$2a$")) {
+            usuario.setPassword(BCrypt.hashpw(userDto.getPassword(), BCrypt.gensalt()));
+        }
 
         // Guardar la entidad en la base de datos
         Usuario usuarioGuardado = userRepo.save(usuario);
 
         // Convertir la entidad guardada nuevamente a DTO
-        UserDto userDtoGuardado = modelMapper.map(usuarioGuardado, UserDto.class);
-
-        return userDtoGuardado;
+        return modelMapper.map(usuarioGuardado, UserDto.class);
     }
-
+    
     @Override
     public void addImageToUsuario(Long id, byte[] imageData) {
         Usuario usuario = userRepo.findById(id)

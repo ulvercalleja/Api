@@ -11,6 +11,7 @@ public interface UserRepo extends JpaRepository<Usuario,Long>{
     Usuario findByNombreUsuario(String nombreUsuario);
     List<Usuario> findAll();
 
-    @Query("SELECT u FROM Usuario u WHERE u.email = :email AND u.password = :password")
-    Usuario login(String email,String password);
+    @Query("SELECT u FROM Usuario u WHERE u.email = :email")
+    Usuario findByEmail(String email);
+
 }
