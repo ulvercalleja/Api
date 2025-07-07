@@ -48,6 +48,32 @@ public class TusComidas {
     @JsonIgnore
     private TipoComida tipoComida;
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
+    public int getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    public TipoComida getTipoComida() {
+        return tipoComida;
+    }
+
+    public void setTipoComida(TipoComida tipoComida) {
+        this.tipoComida = tipoComida;
+    }
     /* Las tablas cumplen la primera y segunda forma normal, sin embargo por comodidad y legibilidad la tabla "TusComidas" no está en 3FN.
         Para que cumpliera la 3FN la calumna "imagen" "nombre" "valor_calorico" se sustituirian por una única columna llamada "ID" para poder
         relacionar las comidas con el usuario respetando la regla de la transitividad. */

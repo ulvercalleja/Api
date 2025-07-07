@@ -40,5 +40,25 @@ public class Usuario {
     @Lob
     @Column(name = "fotoPerfil", columnDefinition = "LONGBLOB")
     private byte[] fotoPerfil; // Campo para almacenar la imagen
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public byte[] getFotoPerfil() {
+        return fotoPerfil;
+    }
+
+    public void setFotoPerfil(byte[] fotoPerfil) {
+        this.fotoPerfil = fotoPerfil;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }
 

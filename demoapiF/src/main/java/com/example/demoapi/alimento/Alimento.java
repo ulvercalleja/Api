@@ -32,4 +32,11 @@ public class Alimento {
     @Column(name = "imagen", columnDefinition = "LONGBLOB")
     private byte[] imagen; // Campo para almacenar la imagen
     
+    public byte[] getImagen() {
+        return imagen;
+    }
+    public void setImagen(byte[] imagen) {
+        this.imagen = imagen;
+    }
+    
 }

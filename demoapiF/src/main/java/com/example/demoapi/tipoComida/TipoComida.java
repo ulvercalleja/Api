@@ -26,4 +26,20 @@ public class TipoComida {
    
     @OneToMany(mappedBy = "tipoComida", cascade = CascadeType.ALL)    
     private List<TusComidas> listaComidas;    
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public List<TusComidas> getListaComidas() {
+        return listaComidas;
+    }
 }

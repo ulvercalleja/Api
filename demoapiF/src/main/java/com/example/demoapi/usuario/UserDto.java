@@ -12,7 +12,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@NoArgsConstructor
+
 
 public class UserDto {
     @EqualsAndHashCode.Include
@@ -31,12 +31,23 @@ public class UserDto {
     
     private String foto_perfil;
     
+    public UserDto() {
+    // puede quedarse vacío
+    }
+
     public UserDto (String nombreUsuario, String password){
 
         this.nombreUsuario = nombreUsuario;
         this.password = password;
 
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    
+
 //     {
 //         "nombreUsuario":"test",
 //         "email":"test@email.com",
